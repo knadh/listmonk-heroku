@@ -6,22 +6,22 @@
   "website": "https://listmonk.app",
   "keywords": ["emails", "newsletter"],
   "scripts": {
-    "postdeploy": "erb config/listmonk.toml.erb > config/listmonk.toml && ./listmonk --config=config/listmonk.toml --install --yes"
+    "build": "sh ./install.sh"
   },
   "success_url": "/settings",
   "env": {
     "LISTMONK_app__admin_username": {
-      "description": "Username to log into the application",
+      "description": "Admin username",
       "value": ""
     },
     "LISTMONK_app__admin_password": {
-      "description": "Password to log into the application. 8 character max!",
+      "description": "Admin password",
       "value": ""
     }
   },
   "buildpacks": [
     {
-      "url": "https://github.com/heroku/heroku-buildpack-nginx"
+      "url": "https://github.com/chrismytton/heroku-buildpack-jq"
     }
   ],
   "addons": ["heroku-postgresql"]
